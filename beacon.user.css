@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name Coolify Beacon - Classic Center
 @namespace github.com/ncjsvr/Coolify-Beacon-Style
-@version 3.2.0
+@version 3.3.0
 @description An information-first Coolify interface: clear state, readable tables, quiet controls.
 @homepageURL https://github.com/ncjsvr/Coolify-Beacon-Style
 @updateURL https://raw.githubusercontent.com/ncjsvr/Coolify-Beacon-Style/main/beacon.user.css
@@ -192,6 +192,7 @@
     }
     html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .nav-section {
         color: var(--beacon-muted) !important;
+        font-family: inherit !important;
         font-size: 12px !important;
         letter-spacing: 0 !important;
         text-transform: none !important;
@@ -212,15 +213,16 @@
     html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-navigation.in-main-nav ~ * {
         grid-column: 1 / -1 !important;
     }
-    /* Classic resource pages: reuse the local menu and native in-page header
+    /* Classic resource pages (apps, databases, services, servers, integrations): reuse the local menu and native in-page header
        that Coolify already renders. Do not force open dropdowns or dialogs. */
     @media (min-width: 1280px) {
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div:has(> aside.application-settings-navigation.in-main-nav) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) :has(> aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) {
+            display: grid !important;
             grid-template-columns: 224px minmax(0, 1fr) !important;
             column-gap: 32px !important;
             align-items: start;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *) {
             display: block !important;
             position: sticky !important;
             inset: auto !important;
@@ -237,7 +239,7 @@
             overflow-y: auto;
             scrollbar-width: thin;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav ~ * {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *) ~ * {
             grid-column: 2 / -1 !important;
         }
         html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main nav [class~="xl:hidden"]:has(h1) {
@@ -273,66 +275,66 @@
        group shows as its first native link, labelled with the group name.
        Groups follow the direct links; reading-flow keeps Tab in that order. */
     @media (min-width: 1280px) {
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu {
             reading-flow: flex-visual;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[data-nav-level] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[data-nav-level] {
             display: none !important;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] {
             display: block !important;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li.contents[x-show="navLevel === -1 && !submenu"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li.contents[x-show="navLevel === -1 && !submenu"] {
             order: -2;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] > ul > li:is(.nav-section, :has(> button[title])) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] > ul > li:is(.nav-section, :has(> button[title])) {
             display: none !important;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] {
             display: block !important;
             order: -1;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="]:nth-child(1 of [x-show*="submenu ==="]) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="]:nth-child(1 of [x-show*="submenu ==="]) {
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid var(--beacon-line);
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:not(:has(> a.menu-item)),
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:has(> a.menu-item) ~ li {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:not(:has(> a.menu-item)),
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:has(> a.menu-item) ~ li {
             display: none !important;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Monitoring'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="'Monitoring'"] {
             --beacon-group: "Monitoring";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Integrations'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="'Integrations'"] {
             --beacon-group: "Integrations";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Shared Variables'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="'Shared Variables'"] {
             --beacon-group: "Shared Variables";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Team'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show$="'Team'"] {
             --beacon-group: "Team";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Notifications'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="'Notifications'"] {
             --beacon-group: "Notifications";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Keys"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show*="'Keys"] {
             --beacon-group: "Keys & Tokens";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Settings'"] {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li[x-show$="'Settings'"] {
             --beacon-group: "Settings";
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item > .menu-item-label {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item > .menu-item-label {
             display: none;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item::after {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item::after {
             content: var(--beacon-group);
             min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-collapsed .sidebar-menu > li[x-show*="submenu ==="] a.menu-item::after {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) aside.application-settings-navigation.in-main-nav:not(.runtime-logs-page *)) .app-sidebar .sidebar-collapsed .sidebar-menu > li[x-show*="submenu ==="] a.menu-item::after {
             display: none;
         }
     }
@@ -664,6 +666,114 @@
     }
     html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid:hover {
         background: var(--beacon-raised) !important;
+    }
+
+    /* 7b. Deployment state carries through every surface: rows that are
+       building, queued or failed get an edge in their state colour, the
+       top-bar indicator reads as a status, and status labels take their
+       colour. Finished and idle rows stay quiet. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid):has(h3) {
+        border-left-width: 1px !important;
+        border-left-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid) h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--beacon-warning) !important;
+        font-size: 14px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid) h3::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background: var(--beacon-warning);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.dashboard-activity a.dashboard-deployment-table-grid, .deployment-table-row):has([class~="bg-warning"]) {
+        background: color-mix(in srgb, var(--beacon-warning) 7%, var(--beacon-panel)) !important;
+        box-shadow: inset 3px 0 0 var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.dashboard-activity a.dashboard-deployment-table-grid, .deployment-table-row):has([class~="bg-red-500"]) {
+        background: color-mix(in srgb, var(--beacon-error) 7%, var(--beacon-panel)) !important;
+        box-shadow: inset 3px 0 0 var(--beacon-error) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.dashboard-activity a.dashboard-deployment-table-grid, .deployment-table-row):has([class~="bg-warning"]):hover {
+        background: color-mix(in srgb, var(--beacon-warning) 11%, var(--beacon-panel)) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.dashboard-activity a.dashboard-deployment-table-grid, .deployment-table-row):has([class~="bg-red-500"]):hover {
+        background: color-mix(in srgb, var(--beacon-error) 11%, var(--beacon-panel)) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar button[aria-label="Active deployments"] {
+        height: 32px !important;
+        padding-inline: 12px !important;
+        border: 1px solid color-mix(in srgb, var(--beacon-warning) 40%, transparent) !important;
+        border-radius: 8px !important;
+        background: color-mix(in srgb, var(--beacon-warning) 12%, var(--beacon-panel)) !important;
+        color: var(--beacon-warning) !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar button[aria-label="Active deployments"]:hover {
+        background: color-mix(in srgb, var(--beacon-warning) 18%, var(--beacon-panel)) !important;
+    }
+    /* Status labels next to a bare dot: deployment log header, compact
+       history, server lists. Warning and error take their colour. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is(span, div, a):has(> span.rounded-full[class~="size-2"]:is([class~="bg-warning"], [class~="dark:bg-warning"], [class~="bg-orange-500"])) {
+        color: var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is(span, div, a):has(> span.rounded-full[class~="size-2"][class~="bg-red-500"]) {
+        color: var(--beacon-error) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-viewer-primary > span:has(> span.rounded-full[class~="size-2"]) {
+        min-height: 24px;
+        padding-inline: 8px;
+        border: 1px solid var(--beacon-control-line);
+        border-radius: 6px;
+        background: var(--beacon-raised);
+        font-size: 12px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-viewer-primary > span:has(> span.rounded-full[class~="bg-warning"]) {
+        border-color: color-mix(in srgb, var(--beacon-warning) 40%, transparent);
+        background: color-mix(in srgb, var(--beacon-warning) 10%, var(--beacon-panel));
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-viewer-primary > span:has(> span.rounded-full[class~="bg-red-500"]) {
+        border-color: color-mix(in srgb, var(--beacon-error) 40%, transparent);
+        background: color-mix(in srgb, var(--beacon-error) 10%, var(--beacon-panel));
+    }
+    /* Usage bars are measurements, not brand colour. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main span:is([class~="bg-[rgb(30,144,255)]"], [class~="bg-[rgb(168,85,247)]"]) {
+        background: var(--beacon-secondary) !important;
+    }
+    /* Canvas "Try it" pill becomes quiet meta text. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .view-toggle a > span.rounded-full[class~="bg-coollabs"] {
+        padding: 0 !important;
+        background: transparent !important;
+        color: var(--beacon-muted) !important;
+        font-size: 11px !important;
+        font-weight: 400 !important;
+    }
+    /* Headings with a hover hint: dotted underline, the usual help cue. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :has(> .info-helper) > .underline,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main .info-helper .underline {
+        text-decoration-style: dotted !important;
+        text-decoration-color: var(--beacon-muted) !important;
+        text-decoration-thickness: 1px !important;
+    }
+    /* Checkbox rows keep the box beside its label instead of 2000px away. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main .form-control:has(> label input[type="checkbox"]) {
+        width: fit-content !important;
+        max-width: 100% !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main .form-control:has(> label input[type="checkbox"]) > label > span:first-child {
+        flex-grow: 0 !important;
+    }
+    /* Utility scrollbars use the neutral thumb, not brand purple. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) * {
+        --tw-scrollbar-thumb: #555B62 !important;
+        --tw-scrollbar-track: transparent !important;
+        --scrollbar-thumb: #555B62 !important;
+        --scrollbar-track: transparent !important;
     }
 
     /* 8. Metrics and logs: content carries the color, controls stay quiet. */
