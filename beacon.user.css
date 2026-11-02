@@ -1,0 +1,786 @@
+/* ==UserStyle==
+@name Coolify Beacon - Classic Center
+@namespace github.com/ncjsvr/Coolify-Beacon-Style
+@version 3.2.0
+@description An information-first Coolify interface: clear state, readable tables, quiet controls.
+@homepageURL https://github.com/ncjsvr/Coolify-Beacon-Style
+@updateURL https://raw.githubusercontent.com/ncjsvr/Coolify-Beacon-Style/main/beacon.user.css
+@supportURL https://github.com/ncjsvr/Coolify-Beacon-Style/issues
+==/UserStyle== */
+
+/*
+ * Coolify v4.5.3 presentation overrides. No instance hostname is stored here.
+ * Every selector requires Coolify's branded app shell, including on mobile.
+ * Design process: Unslop by Damir Sokolovsky (@heydamir), CC BY 4.0
+ * https://heydamir.design/unslop
+ */
+@-moz-document regexp("^https?://[^/]+/.*") {
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) {
+        --beacon-canvas: #151617;
+        --beacon-sidebar: #111214;
+        --beacon-panel: #1B1D1F;
+        --beacon-surface: #202225;
+        --beacon-raised: #272A2D;
+        --beacon-selected: #2D3034;
+        --beacon-ink: #EDEDF0;
+        --beacon-secondary: #B5B8BF;
+        --beacon-muted: #9DA2AA;
+        --beacon-line: rgba(237, 237, 240, 0.1);
+        --beacon-control-line: rgba(237, 237, 240, 0.18);
+        --beacon-warning: #E6B45C;
+        --beacon-success: #69C99D;
+        --beacon-error: #F08B8D;
+        --beacon-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+        --beacon-main-top: 24px;
+        --beacon-main-bottom: 32px;
+        --beacon-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        color-scheme: dark;
+        scroll-padding-top: 96px;
+    }
+
+    /* Palette is supplied by Stylus, including Coolify's separately derived
+       sidebar tokens. No Profile / Appearance configuration is required. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]),
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .app-topbar-brand, .mobile-sidebar-sheet [role="dialog"]) {
+        --theme-bg: var(--beacon-canvas) !important;
+        --theme-text: var(--beacon-ink) !important;
+        --theme-light: 0 !important;
+        --theme-sidebar: var(--beacon-sidebar) !important;
+        --theme-sidebar-text: var(--beacon-ink) !important;
+        --theme-sidebar-light: 0 !important;
+        --theme-base-color: var(--beacon-ink) !important;
+        --theme-bright-color: var(--beacon-ink) !important;
+        --theme-accent-foreground: var(--beacon-canvas) !important;
+        --theme-fg-on-surface: var(--beacon-ink) !important;
+        --theme-scrollbar-thumb: #555B62 !important;
+        --theme-placeholder-color: var(--beacon-muted) !important;
+        --t-bg: var(--beacon-canvas) !important;
+        --t-text: var(--beacon-ink) !important;
+        --t-light: 0 !important;
+        --color-app: var(--beacon-canvas) !important;
+        --color-panel: var(--beacon-sidebar) !important;
+        --color-sidebar: var(--beacon-sidebar) !important;
+        --color-base: var(--beacon-panel) !important;
+        --color-card: var(--beacon-panel) !important;
+        --color-surface: var(--beacon-panel) !important;
+        --color-content-surface: var(--beacon-panel) !important;
+        --color-raised: var(--beacon-raised) !important;
+        --color-selected: var(--beacon-selected) !important;
+        --color-coolgray-100: var(--beacon-panel) !important;
+        --color-coolgray-200: var(--beacon-surface) !important;
+        --color-coolgray-300: var(--beacon-raised) !important;
+        --color-coolgray-400: var(--beacon-selected) !important;
+        --color-coolgray-500: #393D42 !important;
+        --color-accent: var(--beacon-ink) !important;
+        --color-accent-foreground: var(--beacon-canvas) !important;
+        --color-brand: var(--beacon-ink) !important;
+        --color-brand-hover: #FFFFFF !important;
+        --color-brand-press: #D5D7DC !important;
+        --color-brand-depth: #9DA2AA !important;
+        --color-brand-ring: var(--beacon-ink) !important;
+        --color-brand-light: var(--beacon-ink) !important;
+        --color-brand-foreground: var(--beacon-canvas) !important;
+        --color-coollabs: var(--beacon-ink) !important;
+        --color-coollabs-100: #FFFFFF !important;
+        --color-coollabs-200: #D5D7DC !important;
+        --color-coollabs-300: #9DA2AA !important;
+        --color-warning: var(--beacon-warning) !important;
+        --color-success: var(--beacon-success) !important;
+        --color-error: var(--beacon-error) !important;
+        --color-fg: var(--beacon-ink) !important;
+        --color-fg-dim: var(--beacon-secondary) !important;
+        --color-fg-faint: var(--beacon-muted) !important;
+        --color-nav-text: var(--beacon-secondary) !important;
+        --color-nav-muted: var(--beacon-muted) !important;
+        --color-nav-active: var(--beacon-ink) !important;
+        --color-hairline: var(--beacon-line) !important;
+        --color-log: #111214 !important;
+        --color-log-toolbar: var(--beacon-panel) !important;
+        --coollabs-canvas: var(--beacon-canvas) !important;
+        --coollabs-elevated: var(--beacon-panel) !important;
+        --coollabs-recessed: var(--beacon-raised) !important;
+        --coollabs-base: var(--beacon-panel) !important;
+        --coollabs-fill: var(--beacon-raised) !important;
+        --coollabs-line: var(--beacon-control-line) !important;
+        --coollabs-hairline: var(--beacon-line) !important;
+        --coollabs-divider: var(--beacon-line) !important;
+        --coollabs-subtle: var(--beacon-muted) !important;
+    }
+
+    /* Native light appearance uses raw neutral utilities. Remap those too,
+       keeping installation independent of Coolify's saved appearance mode. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="bg-white"], [class~="bg-white/95"], [class~="bg-white/80"], [class~="bg-neutral-50"]) {
+        background-color: var(--beacon-panel) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="bg-neutral-100"], [class~="bg-neutral-200"]) {
+        background-color: var(--beacon-raised) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-black"], [class~="text-neutral-950"], [class~="text-neutral-900"]) {
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-neutral-600"], [class~="text-neutral-700"]) {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-neutral-400"], [class~="text-neutral-500"]) {
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="border-neutral-200"], [class~="border-neutral-300"]) {
+        border-color: var(--beacon-control-line) !important;
+    }
+
+    /* 1. Shell: fixed desktop bar + 32px clearance; mobile bar is in flow.
+       Preserve native sidebar offsets, collapsed navigation and full canvases. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) body,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-shell,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main {
+        background-color: var(--beacon-canvas) !important;
+        color: var(--beacon-ink);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) {
+        padding-top: var(--beacon-main-top) !important;
+        padding-bottom: var(--beacon-main-bottom) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full):not(.app-main-wide) > div.w-full {
+        width: 100%;
+        max-width: 1600px !important;
+        margin-inline: auto;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace {
+        width: 100%;
+        max-width: none !important;
+        min-width: 0;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main .application-settings-form:not(.application-settings-section) {
+        min-width: 0;
+        max-width: none !important;
+    }
+    @media (min-width: 1024px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) {
+            --beacon-main-top: 80px;
+            --beacon-main-bottom: 40px;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-topbar, .app-topbar-brand, .app-sidebar nav.sidebar-nav, .mobile-sidebar-sheet [role="dialog"]) {
+        background-color: var(--beacon-sidebar) !important;
+        background-image: none !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem) {
+        min-height: 36px;
+        border-radius: 6px !important;
+        color: var(--beacon-secondary) !important;
+        box-shadow: none !important;
+        transition: color 150ms var(--beacon-ease), background-color 150ms var(--beacon-ease);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem):hover {
+        background-color: var(--beacon-panel) !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item-active, .menu-subitem-active) {
+        background-color: var(--beacon-selected) !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .menu-item-icon:not(.text-error):not(.text-warning) {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: currentColor !important;
+        background-image: none !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .nav-section {
+        color: var(--beacon-muted) !important;
+        font-size: 12px !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar :is(#server-topbar-context, #resource-action-hud-slot) {
+        font-size: 14px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar span.font-semibold {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500 !important;
+        opacity: 1;
+    }
+    /* Compact pages use native navigation; the classic desktop rail is below. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-navigation.in-main-nav {
+        display: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-navigation.in-main-nav ~ * {
+        grid-column: 1 / -1 !important;
+    }
+    /* Classic resource pages: reuse the local menu and native in-page header
+       that Coolify already renders. Do not force open dropdowns or dialogs. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div:has(> aside.application-settings-navigation.in-main-nav) {
+            grid-template-columns: 224px minmax(0, 1fr) !important;
+            column-gap: 32px !important;
+            align-items: start;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav {
+            display: block !important;
+            position: sticky !important;
+            inset: auto !important;
+            top: 80px !important;
+            align-self: start;
+            width: auto !important;
+            height: auto !important;
+            max-height: calc(100dvh - 104px);
+            margin: 0 !important;
+            padding: 0 16px 0 0 !important;
+            border-right: 1px solid var(--beacon-line);
+            border-radius: 0 !important;
+            background: transparent !important;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav ~ * {
+            grid-column: 2 / -1 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main nav [class~="xl:hidden"]:has(h1) {
+            display: flex !important;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 24px !important;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--beacon-line);
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main nav [class~="xl:hidden"] [class~="lg:hidden"]:has(h1) {
+            display: block !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main nav [class~="xl:hidden"] h1) #resource-action-hud-slot {
+            display: none !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace .application-settings-navigation .menu-item {
+        min-height: 36px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace .application-settings-navigation .menu-item-active {
+        background: var(--beacon-selected) !important;
+        color: var(--beacon-warning) !important;
+    }
+    /* Classic global rail: when a page has its own settings rail, the outer
+       rail shows the main menu instead of a second copy of those settings.
+       Group buttons open submenus only through Alpine's navLevel, so each
+       group shows as its first native link, labelled with the group name.
+       Groups follow the direct links; reading-flow keeps Tab in that order. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu {
+            reading-flow: flex-visual;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[data-nav-level] {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] {
+            display: block !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li.contents[x-show="navLevel === -1 && !submenu"] {
+            order: -2;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] > ul > li:is(.nav-section, :has(> button[title])) {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] {
+            display: block !important;
+            order: -1;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="]:nth-child(1 of [x-show*="submenu ==="]) {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--beacon-line);
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:not(:has(> a.menu-item)),
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:has(> a.menu-item) ~ li {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Monitoring'"] {
+            --beacon-group: "Monitoring";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Integrations'"] {
+            --beacon-group: "Integrations";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Shared Variables'"] {
+            --beacon-group: "Shared Variables";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Team'"] {
+            --beacon-group: "Team";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Notifications'"] {
+            --beacon-group: "Notifications";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Keys"] {
+            --beacon-group: "Keys & Tokens";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Settings'"] {
+            --beacon-group: "Settings";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item > .menu-item-label {
+            display: none;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item::after {
+            content: var(--beacon-group);
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-collapsed .sidebar-menu > li[x-show*="submenu ==="] a.menu-item::after {
+            display: none;
+        }
+    }
+    /* Open form sections resemble the classic page; tables/logs keep shells. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) {
+        border: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) > .application-settings-section-body {
+        border: 0 !important;
+        padding: 16px 0 !important;
+        background: transparent !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) > header {
+        padding: 0 0 8px !important;
+    }
+
+    /* 2. Typography: existing Geist/Reicon, three text roles, tabular figures. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main {
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+        font-size: 28px !important;
+        line-height: 36px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-black"], [class~="text-neutral-950"]) {
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-neutral-600"], [class~="text-fg-dim"], [class~="dark:text-fg-dim"]) {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-neutral-400"], [class~="text-neutral-500"], [class~="text-fg-faint"], [class~="dark:text-fg-faint"]) {
+        color: var(--beacon-muted) !important;
+    }
+    /* Keep semantic text separate from Coolify's custom-theme brand mapping. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-warning"], [class~="dark:text-warning"]) {
+        color: var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-success"], [class~="dark:text-success"]) {
+        color: var(--beacon-success) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-error"], [class~="dark:text-error"]) {
+        color: var(--beacon-error) !important;
+    }
+
+    /* 3. Resource/settings sections: flat surfaces and readable section titles. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section {
+        border: 1px solid var(--beacon-line) !important;
+        border-radius: 12px !important;
+        padding: 8px !important;
+        background: var(--beacon-panel) !important;
+        box-shadow: none !important;
+        scroll-margin-top: 96px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) {
+        gap: 12px;
+        min-height: 40px;
+        padding: 4px 8px 12px !important;
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) :is(h2, h3) {
+        color: var(--beacon-ink) !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        line-height: 24px !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) p {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section-body {
+        padding: 16px !important;
+        border: 1px solid var(--beacon-line) !important;
+        border-radius: 4px !important;
+        background: var(--beacon-surface) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section-body.is-flush {
+        padding: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.application-settings-form, .application-settings-workspace) label {
+        font-size: 13px !important;
+        line-height: 20px !important;
+        font-weight: 500 !important;
+        color: var(--beacon-ink) !important;
+    }
+    /* Preserve field/toolbar heights, password toggles, steppers and editors. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.input, .select, .listbox-trigger) {
+        border-color: var(--beacon-control-line) !important;
+        border-radius: 8px !important;
+        background-color: var(--beacon-canvas) !important;
+        color: var(--beacon-ink) !important;
+        font-size: 13px;
+        font-weight: 400;
+        box-shadow: none;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(input, textarea)::placeholder {
+        color: var(--beacon-muted) !important;
+        opacity: 1;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.input, .select, .listbox-trigger, button, a):focus-visible {
+        outline: 2px solid var(--beacon-secondary) !important;
+        outline-offset: 2px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.listbox-panel, .searchable-listbox-panel) {
+        background: var(--beacon-raised) !important;
+        border-color: var(--beacon-control-line) !important;
+        border-radius: 8px !important;
+        color: var(--beacon-ink);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+    }
+
+    /* 4. Actions: one clear primary action, quiet secondary controls. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button:not(.button-error):not(.button-highlighted):not(.split-action-main):not([isHighlighted]) {
+        background: var(--beacon-raised) !important;
+        border-color: var(--beacon-control-line) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.button-highlighted, .button[isHighlighted], .split-action-main):not(.button-error) {
+        background: var(--beacon-ink) !important;
+        color: var(--beacon-canvas) !important;
+        border-color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.button-highlighted, .button[isHighlighted], .split-action-main) svg {
+        color: currentColor !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button-error {
+        background: color-mix(in srgb, var(--beacon-error) 10%, var(--beacon-panel)) !important;
+        border-color: color-mix(in srgb, var(--beacon-error) 30%, transparent) !important;
+        color: var(--beacon-error) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button:disabled {
+        opacity: 0.45;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-tab {
+        color: var(--beacon-secondary) !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+        font-weight: 400 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-tab-active {
+        color: var(--beacon-ink) !important;
+        background: var(--beacon-selected) !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .view-toggle {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-control-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .view-toggle > .is-selected {
+        background: var(--beacon-selected) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+    }
+
+    /* 5. Projects/resources/servers: names first, domains and state readable. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([x-data="projectsIndex()"], [x-data="resourceIndex()"], .application-settings-form:has(.dashboard-activity)) article {
+        border-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        transform: none !important;
+        transition: background-color 150ms var(--beacon-ease), border-color 150ms var(--beacon-ease) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([x-data="projectsIndex()"], [x-data="resourceIndex()"], .application-settings-form:has(.dashboard-activity)) article:hover {
+        background: var(--beacon-surface) !important;
+        border-color: var(--beacon-control-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .resource-glyph {
+        color: var(--beacon-secondary) !important;
+        background: transparent !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .resource-glyph svg {
+        color: inherit !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.project-description, .resource-domain, .resource-server, .mobile-resource-domain) {
+        color: var(--beacon-secondary) !important;
+        font-size: 13px;
+        line-height: 20px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.projects-table-grid, .environment-resource-grid).group {
+        min-height: 56px;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main [x-show="viewMode === 'table'"] > a.grid {
+        min-height: 56px;
+        border-color: var(--beacon-line) !important;
+        color: var(--beacon-ink) !important;
+    }
+
+    /* 6. Data tables and history: retain native columns and responsive modes. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-header {
+        min-height: 40px;
+        height: 40px !important;
+        border-bottom-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        color: var(--beacon-muted) !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-row {
+        min-height: 48px !important;
+        padding-block: 12px !important;
+        color: var(--beacon-ink) !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
+        border-bottom-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-header [class~="uppercase"] {
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.data-table-row, .projects-table-grid.group, .environment-resource-grid.group):hover {
+        background-color: var(--beacon-raised) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-row-active {
+        background: var(--beacon-selected) !important;
+        box-shadow: inset 2px 0 0 var(--beacon-secondary);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .env-table-item {
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .env-key-label {
+        font-family: var(--beacon-mono);
+        font-size: 13px;
+        font-weight: 500 !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.data-table, .deployment-table-scroll) {
+        scrollbar-width: thin;
+        scrollbar-color: #555B62 transparent;
+        font-variant-numeric: tabular-nums;
+    }
+    /* No deployment grid-template override: embedded history has 5/2 columns. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has(> span.relative.flex, > span.rounded-full) {
+        min-height: 24px;
+        border-radius: 6px !important;
+        border-color: var(--beacon-control-line) !important;
+        background: var(--beacon-raised) !important;
+        color: var(--beacon-secondary) !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-warning"]) {
+        color: var(--beacon-warning) !important;
+        background: color-mix(in srgb, var(--beacon-warning) 8%, var(--beacon-panel)) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-emerald-500"]) {
+        color: var(--beacon-success) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-red-500"]) {
+        color: var(--beacon-error) !important;
+    }
+
+    /* 7. Dashboard: the activity section is the operational focus. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-form:has(.dashboard-activity) .grid:has(> .dashboard-activity) {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 32px !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .grid > .dashboard-activity {
+            grid-column: 1 / -1 !important;
+            order: -1 !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity :is(h2, h3) {
+        color: var(--beacon-ink) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h2 {
+        font-size: 20px !important;
+        line-height: 28px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h3 {
+        font-size: 13px !important;
+        line-height: 20px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid) {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-line) !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid):has(h3) {
+        border-left: 2px solid var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity .dashboard-deployment-table-grid:not(a) {
+        min-height: 40px;
+        background: var(--beacon-panel) !important;
+        color: var(--beacon-muted) !important;
+        border-color: var(--beacon-line) !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid {
+        min-height: 56px;
+        padding-block: 12px !important;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid > div:first-child > p:first-child {
+        color: var(--beacon-ink) !important;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid > p:last-of-type {
+        font-family: var(--beacon-mono);
+        font-size: 12px !important;
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid:hover {
+        background: var(--beacon-raised) !important;
+    }
+
+    /* 8. Metrics and logs: content carries the color, controls stay quiet. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(#metrics-overview-section, #metrics-servers-section, #metrics-containers-section, #cpu-metrics-section, #memory-metrics-section) {
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-text {
+        fill: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-legend-text {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-gridline {
+        stroke: var(--beacon-line) !important;
+    }
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page {
+            height: calc(100dvh - var(--beacon-main-top) - var(--beacon-main-bottom)) !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.runtime-log-shell, .runtime-log-panel, .logs-viewer) {
+        background: #111214 !important;
+        border-color: var(--beacon-line) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page :is(.application-settings-workspace, .runtime-logs-column, .runtime-logs-workspace, .runtime-logs-fill, .application-settings-section, .application-settings-section-body, .runtime-log-shell, .runtime-log-panel, .logs-viewer) {
+        min-width: 0;
+        max-width: 100%;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page > .application-settings-workspace > .grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.runtime-log-toolbar, .logs-viewer-toolbar) {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.logs-viewer-line-text, .logs-viewer-timestamp, .runtime-log-detail) {
+        font-family: var(--beacon-mono) !important;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-viewer-timestamp {
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.logs-viewer-btn, .runtime-log-icon-button) {
+        color: var(--beacon-secondary) !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.terminal-target-card, .terminal-target-picker) {
+        border-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .terminal-session-toolbar {
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.terminal-target-group-label, .terminal-target-list section > div) {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        font-weight: 400 !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+        color: var(--beacon-muted) !important;
+    }
+    /* Coolify uses important Tailwind utilities for these headings.
+       Important declarations in the early theme layer outrank important
+       utilities; an unlayered important rule cannot override them. */
+    @layer theme {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+            font-size: 28px !important;
+            line-height: 36px !important;
+            font-weight: 500 !important;
+            letter-spacing: 0 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h2,
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-form:has(.dashboard-activity) section > .mb-3 h2 {
+            font-size: 20px !important;
+            line-height: 28px !important;
+            font-weight: 500 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h3 {
+            font-size: 13px !important;
+            line-height: 20px !important;
+            font-weight: 500 !important;
+        }
+        @media (max-width: 767px) {
+            html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+                font-size: 24px !important;
+                line-height: 32px !important;
+            }
+        }
+    }
+    /* Virtualized line height/transforms, chart series and terminal canvas are native. */
+    @media (max-width: 767px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+            font-size: 24px !important;
+            line-height: 32px !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem) {
+            min-height: 40px;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-settings-section > :is(header, .application-settings-section-header) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-settings-section > :is(header, .application-settings-section-header) > div {
+            min-width: 0;
+            max-width: 100%;
+            flex-wrap: wrap;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.menu-item, .menu-subitem, .data-table-row, article) {
+            transition: none !important;
+        }
+    }
+}

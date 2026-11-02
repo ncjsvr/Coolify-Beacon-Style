@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en" class="dark" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beacon — sample Coolify screens</title>
+<style>
+/* Native structural baseline from Coolify v4.5.3; sample data only. */
+:root{--color-app:#0a0a0a;--color-card:#121212;--color-panel:#141414;--color-fg:#f5f5f5;--color-fg-dim:#b4b4b8;--color-fg-faint:#96969d;--color-brand:#6b16ed;--color-brand-light:#a391ff;--color-success:#32c788;--color-warning:#e6bd53;--color-error:#ed6568;--coollabs-line:#333338;--coollabs-hairline:#333338;--coollabs-divider:#252529;--coollabs-base:#1b1b1e;--coollabs-canvas:#0a0a0a;--coollabs-elevated:#161618;--coollabs-recessed:#222225;--coollabs-fill:#2c2c30;--coollabs-subtle:#a1a1a8;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;font-family:"Geist Sans",Inter,system-ui,sans-serif;font-size:14px;color:var(--color-fg);background:var(--color-app)}a{color:inherit;text-decoration:none}p,h1,h2,h3{margin:0}strong{font-weight:600}button,input,select,textarea{font:inherit}button{cursor:pointer}h1{font-size:24px;font-weight:600;line-height:32px}h2{font-size:20px;line-height:28px;font-weight:600}h3{font-size:13px;line-height:20px;font-weight:600}
+.app-topbar{height:48px;background:#0d0d0f;border-bottom:1px solid #28282e;display:flex;align-items:center;gap:16px;padding:0 20px;z-index:30}.app-topbar-brand{width:204px;display:flex;align-items:center;gap:8px;flex-shrink:0}.app-topbar-brand a{font-size:17px;font-weight:600}.app-topbar-brand small{font-size:11px;color:#999}.topbar-context{display:flex;align-items:center;gap:12px;font-size:13px;color:#aaa}.topbar-context strong{color:#ddd}.app-sidebar{display:none}.app-sidebar nav.sidebar-nav{background:#120e1a;height:100%;padding:16px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid #2b2932}.menu-item,.menu-subitem{display:flex;align-items:center;gap:10px;min-height:36px;padding:6px 12px;border-radius:6px;font-size:13px;color:#b6b4bd}.menu-item-active{background:#6b16ed;color:white}.menu-item-icon{width:16px;height:16px;flex-shrink:0}.nav-section{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#8a849b;margin:20px 12px 4px}.menu-search{margin-bottom:8px;border:1px solid #322c43;min-height:36px}.menu-search kbd{font-size:10px;margin-left:auto}.sidebar-footer{margin-top:auto;padding-top:20px}.app-main{padding:24px;min-width:0}.app-main>div.w-full{width:100%;max-width:100%;margin-inline:auto}
+.page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:24px}.page-heading p{margin-top:4px;font-size:13px;line-height:20px}.section-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;min-height:32px}.stack{display:flex;flex-direction:column;min-width:0}.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}.gap-6{gap:24px}.gap-8{gap:32px}.grid{display:grid;min-width:0}.flex{display:flex}.inline-flex{display:inline-flex}.relative{position:relative}.items-center{align-items:center}.min-w-0{min-width:0}.w-full{width:100%}.shrink-0{flex-shrink:0}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.font-mono{font-family:"Geist Mono",Consolas,monospace}.font-semibold{font-weight:600}.font-medium{font-weight:500}.text-xs{font-size:12px}.text-neutral-500,.text-neutral-400{color:#96969d}.tabular-nums{font-variant-numeric:tabular-nums}.border{border:1px solid #36363b}.rounded-full{border-radius:999px}.rounded-xl{border-radius:12px}.bg-white{background:#121212}.bg-neutral-100{background:#26262b}.h-6{height:24px}.px-2{padding-inline:8px}.gap-1\.5{gap:6px}.size-1\.5{width:6px;height:6px}.bg-success,.bg-emerald-500{background:var(--color-success)}.bg-warning{background:var(--color-warning)}.bg-error,.bg-red-500{background:var(--color-error)}.bg-neutral{background:#85858b}.text-right{text-align:right}
+.table-shell,.box{border:1px solid #303034;background:#121212;border-radius:12px;overflow:hidden}.table-head{font-size:11px;color:#929299;background:#0c0c0d;border-bottom:1px solid #2a2a2f;padding:10px 16px;align-items:center}.table-row{min-height:56px;padding:10px 16px;border-bottom:1px solid #26262b;align-items:center}.table-row:last-child{border-bottom:0}.table-row:hover{background:#18181b}.resource-name{font-size:13px;font-weight:600}.collection-grid{display:grid;gap:12px;grid-template-columns:1fr}.resource-view{padding:16px}.resource-tile-heading{display:flex;align-items:flex-start;gap:12px}.resource-tile-heading p{font-size:12px;line-height:18px;margin-top:4px}.resource-tile-footer{font-size:11px;margin-top:20px;padding-top:12px;border-top:1px solid #27272b}.server-grid{display:grid;grid-template-columns:minmax(140px,1fr) 110px minmax(170px,1fr) 100px;gap:16px}.table-scroll{overflow-x:auto}.server-grid{min-width:620px}.dashboard-layout{grid-template-columns:minmax(0,1fr)}.dashboard-activity{display:flex;flex-direction:column;min-width:0;gap:32px}.dashboard-activity section{container-type:inline-size}.deployment-card-title{padding:10px 16px;border-bottom:1px solid #2a2a2f}.deployment-card-title h3,.deployment-card-title p{font-size:11px;line-height:16px;color:#96969d}.dashboard-deployment-table-grid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.7fr) 6.5rem 6rem}.dashboard-deployment-table-grid.table-head{display:none}.dashboard-deployment-table-grid:not(.table-head){display:block;padding:12px 16px;border-bottom:1px solid #29292d}.dashboard-deployment-table-grid:not(.table-head):last-child{border:0}.dashboard-deployment-table-grid p{font-size:12px}.dashboard-deployment-table-grid .resource-name{font-size:13px}.desktop-cell{display:none}.mobile-deployment{display:flex;gap:12px;align-items:center;margin-top:12px}.mobile-deployment p{font-size:11px}
+.application-settings-workspace{width:100%}.workspace-grid{display:grid;gap:32px}.application-settings-navigation.in-main-nav{display:none!important}.workspace-grid:has(>.in-main-nav)>.application-settings-form{grid-column:1/-1}.application-settings-form{min-width:0}.application-settings-section{margin:0;display:flex;width:100%;flex-direction:column;border:1px solid #303034;border-radius:12px;padding:6px;background:#0c0c0e}.application-settings-section>header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;min-height:36px;padding:4px 8px 10px}.application-settings-section-body{position:relative;border:1px solid #252529;border-radius:8px;padding:16px;background:#171719}.application-settings-section-body.is-flush{padding:0}.resource-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:16px}.resource-toolbar .input{max-width:300px}.input,.select{height:36px;max-width:100%;border:1px solid #34343a;border-radius:6px;background:#222225;color:#efeff2;padding:6px 10px;min-width:0}.h-7{height:28px!important;padding-block:0!important}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:32px;border:1px solid #4d3d6a;border-radius:6px;background:#221633;color:#d4c5f2;padding:6px 12px;font-size:13px;font-weight:500;white-space:nowrap}.button-highlighted,.split-action-main{background:var(--color-brand);border-color:#8a4dff;color:white}.button-error{background:#3b191d;border-color:#7b3038;color:#fda4ab}.data-table{min-width:0;max-width:100%;overflow-x:auto}.data-table-header,.data-table-row{display:grid;align-items:center;gap:16px;padding-inline:16px}.data-table-header{height:40px;color:#96969d;background:#0d0d0e;border-bottom:1px solid #2b2b30;font-size:13px;font-weight:500}.data-table-row{min-height:48px;padding-block:10px;color:#c4c4ca;border-bottom:1px solid #28282d;font-size:13px}.data-table-row:last-child{border:0}.data-table-row-active{background:#21172f}.deployment-table-scroll{overflow-x:auto}.deployment-table-grid{min-width:944px;grid-template-columns:7.5rem minmax(7rem,.8fr) minmax(12rem,1.7fr) minmax(8rem,.9fr) 6.5rem minmax(7rem,.8fr)}.deployment-table-embedded .deployment-table-grid{grid-template-columns:minmax(7rem,.8fr) minmax(12rem,1.7fr) 6.5rem minmax(7rem,.8fr) 5rem}.embedded-meta{display:none;line-height:16px;margin-top:2px}.embedded-grid{display:grid;gap:24px;margin-top:24px}.form-grid{display:grid;grid-template-columns:1fr;gap:16px}label{font-size:13px;color:#b7b7bd;display:flex;flex-direction:column;gap:8px}label .input,label .select{width:100%}.form-actions{grid-column:1/-1}.environment-resource-grid{display:grid;grid-template-columns:minmax(120px,1fr) 110px;gap:16px}.resource-domain,.resource-server,.resource-tags,.resource-type{display:none}.environment-table-scroll{overflow-x:auto}.env-table-grid{min-width:900px;grid-template-columns:minmax(200px,1fr) 70px 100px repeat(4,70px) 64px}.env-table-grid p{font-size:11px;margin-top:4px}.env-table-grid>span{text-align:center}.runtime-log-shell{min-width:0;background:#0d0d0e;border:1px solid #2e2e33;border-radius:8px;overflow:hidden}.log-toolbar{display:flex;gap:8px;align-items:center;background:#18181b;padding:10px 16px;border-bottom:1px solid #2b2b30;font-size:12px}.logs-viewer{margin:0;min-height:300px;max-width:100%;overflow:auto;padding:16px;font-family:Consolas,monospace;font-size:12px;line-height:1.5;color:#bfc0c5;white-space:pre}.runtime-logs-page>.application-settings-workspace>.grid{display:grid}.apexcharts-svg{display:block;width:100%;max-height:300px}.app-main-full{padding:0!important}.app-main-full>div.w-full{max-width:none!important}.app-main-full [data-canvas-root]{position:relative;height:calc(100dvh - 48px);overflow:hidden;background:#141416}.canvas-viewport{position:absolute;inset:0;transform-origin:0 0}.canvas-edges{position:absolute;inset:0}.canvas-node{position:absolute;display:flex;flex-direction:column;align-items:flex-start;gap:12px;border:1px solid #3b3b42;background:#202024;border-radius:12px}.preview-controls{position:fixed;z-index:1000;bottom:12px;right:12px;display:flex;gap:8px;align-items:center;border:1px solid #54545d;border-radius:8px;padding:8px 12px;background:#1a1a1e;box-shadow:0 6px 20px #0005;font:12px system-ui;color:#ccc}.preview-controls label{display:block;font:12px system-ui;color:#ccc}.preview-controls select{background:#26262b;color:#eee;border:1px solid #55555f;border-radius:4px;padding:4px}.sample-note{font-size:11px;color:#999}
+@container (min-width:672px){.dashboard-deployment-table-grid.table-head,.dashboard-deployment-table-grid:not(.table-head){display:grid;gap:16px;align-items:center}.desktop-cell{display:block}.mobile-deployment{display:none}}
+@media(min-width:640px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.app-topbar{position:fixed;top:0;left:0;right:0}.app-sidebar{display:block;position:fixed;top:48px;left:0;bottom:0;width:224px}.app-main{margin-left:224px;padding:76px 24px 32px;width:calc(100% - 224px)}.app-main-full{padding:48px 0 0!important}.deployment-table-grid{min-width:0}.resource-domain,.resource-server,.resource-tags,.resource-type{display:block}.environment-resource-grid{grid-template-columns:minmax(170px,1.4fr) 100px 110px minmax(150px,1fr) 110px 100px}}
+@media(min-width:1280px){.dashboard-layout{grid-template-columns:minmax(0,1fr) 352px;align-items:start}.dashboard-activity{order:1}.workspace-grid{grid-template-columns:210px minmax(0,1fr)}.collection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1536px){.embedded-grid{grid-template-columns:minmax(0,1fr) 360px}.deployment-table-embedded .deployment-table-grid{grid-template-columns:minmax(0,1fr) 5rem}.deployment-table-embedded .deployment-table-grid>:nth-child(1),.deployment-table-embedded .deployment-table-grid>:nth-child(3),.deployment-table-embedded .deployment-table-grid>:nth-child(4){display:none}.embedded-meta{display:block}}
+html:not(.dark){--color-app:#fafafa;--color-fg:#171717;--color-fg-dim:#525252;--color-fg-faint:#737373;color-scheme:light}
+html:not(.dark) .application-settings-section{background:#f4f4f5;border-color:#d4d4d8}html:not(.dark) .application-settings-section-body,html:not(.dark) .bg-white{background:#fff;color:#171717}html:not(.dark) .data-table-header{background:#f4f4f5;color:#737373}html:not(.dark) .data-table-row{color:#525252}html:not(.dark) .button:not(.button-highlighted):not(.split-action-main):not(.button-error){background:#f4f4f5;color:#171717;border-color:#d4d4d8}html:not(.dark) label{color:#525252}html[data-theme="custom"] .text-warning{color:var(--theme-fg-on-surface)!important}</style>
+<style>
+/* Keep the native important-utility cascade and section-heading DOM in this
+   fixture. These are also tested against the actual compiled app stylesheet. */
+@layer theme,base,components,utilities;
+@layer utilities {
+  [class~="text-[14px]!"]{font-size:14px!important}
+  [class~="leading-5!"]{line-height:20px!important}
+  [class~="font-semibold!"]{font-weight:600!important}
+}
+.mb-3{margin-bottom:12px}.flex-wrap{flex-wrap:wrap}.items-baseline{align-items:baseline}.justify-between{justify-content:space-between}.gap-x-4{column-gap:16px}.gap-y-2{row-gap:8px}
+[class~="hidden"]{display:none}
+@media(min-width:1280px){[class~="xl:hidden"]{display:none}}
+html.dark:not([data-theme="custom"]) .app-sidebar nav.sidebar-nav{background-image:linear-gradient(180deg,rgba(107,22,237,.09),transparent 520px)}
+html.dark:not([data-theme="custom"]) .app-topbar-brand{background-image:linear-gradient(rgba(107,22,237,.09),rgba(107,22,237,.09))}
+</style>
+<style id="beacon-userstyle">/* ==UserStyle==
+@name Coolify Beacon - Classic Center
+@namespace github.com/ncjsvr/Coolify-Beacon-Style
+@version 3.2.0
+@description An information-first Coolify interface: clear state, readable tables, quiet controls.
+@homepageURL https://github.com/ncjsvr/Coolify-Beacon-Style
+@updateURL https://raw.githubusercontent.com/ncjsvr/Coolify-Beacon-Style/main/beacon.user.css
+@supportURL https://github.com/ncjsvr/Coolify-Beacon-Style/issues
+==/UserStyle== */
+
+/*
+ * Coolify v4.5.3 presentation overrides. No instance hostname is stored here.
+ * Every selector requires Coolify's branded app shell, including on mobile.
+ * Design process: Unslop by Damir Sokolovsky (@heydamir), CC BY 4.0
+ * https://heydamir.design/unslop
+ */
+
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) {
+        --beacon-canvas: #151617;
+        --beacon-sidebar: #111214;
+        --beacon-panel: #1B1D1F;
+        --beacon-surface: #202225;
+        --beacon-raised: #272A2D;
+        --beacon-selected: #2D3034;
+        --beacon-ink: #EDEDF0;
+        --beacon-secondary: #B5B8BF;
+        --beacon-muted: #9DA2AA;
+        --beacon-line: rgba(237, 237, 240, 0.1);
+        --beacon-control-line: rgba(237, 237, 240, 0.18);
+        --beacon-warning: #E6B45C;
+        --beacon-success: #69C99D;
+        --beacon-error: #F08B8D;
+        --beacon-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+        --beacon-main-top: 24px;
+        --beacon-main-bottom: 32px;
+        --beacon-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        color-scheme: dark;
+        scroll-padding-top: 96px;
+    }
+
+    /* Palette is supplied by Stylus, including Coolify's separately derived
+       sidebar tokens. No Profile / Appearance configuration is required. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]),
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .app-topbar-brand, .mobile-sidebar-sheet [role="dialog"]) {
+        --theme-bg: var(--beacon-canvas) !important;
+        --theme-text: var(--beacon-ink) !important;
+        --theme-light: 0 !important;
+        --theme-sidebar: var(--beacon-sidebar) !important;
+        --theme-sidebar-text: var(--beacon-ink) !important;
+        --theme-sidebar-light: 0 !important;
+        --theme-base-color: var(--beacon-ink) !important;
+        --theme-bright-color: var(--beacon-ink) !important;
+        --theme-accent-foreground: var(--beacon-canvas) !important;
+        --theme-fg-on-surface: var(--beacon-ink) !important;
+        --theme-scrollbar-thumb: #555B62 !important;
+        --theme-placeholder-color: var(--beacon-muted) !important;
+        --t-bg: var(--beacon-canvas) !important;
+        --t-text: var(--beacon-ink) !important;
+        --t-light: 0 !important;
+        --color-app: var(--beacon-canvas) !important;
+        --color-panel: var(--beacon-sidebar) !important;
+        --color-sidebar: var(--beacon-sidebar) !important;
+        --color-base: var(--beacon-panel) !important;
+        --color-card: var(--beacon-panel) !important;
+        --color-surface: var(--beacon-panel) !important;
+        --color-content-surface: var(--beacon-panel) !important;
+        --color-raised: var(--beacon-raised) !important;
+        --color-selected: var(--beacon-selected) !important;
+        --color-coolgray-100: var(--beacon-panel) !important;
+        --color-coolgray-200: var(--beacon-surface) !important;
+        --color-coolgray-300: var(--beacon-raised) !important;
+        --color-coolgray-400: var(--beacon-selected) !important;
+        --color-coolgray-500: #393D42 !important;
+        --color-accent: var(--beacon-ink) !important;
+        --color-accent-foreground: var(--beacon-canvas) !important;
+        --color-brand: var(--beacon-ink) !important;
+        --color-brand-hover: #FFFFFF !important;
+        --color-brand-press: #D5D7DC !important;
+        --color-brand-depth: #9DA2AA !important;
+        --color-brand-ring: var(--beacon-ink) !important;
+        --color-brand-light: var(--beacon-ink) !important;
+        --color-brand-foreground: var(--beacon-canvas) !important;
+        --color-coollabs: var(--beacon-ink) !important;
+        --color-coollabs-100: #FFFFFF !important;
+        --color-coollabs-200: #D5D7DC !important;
+        --color-coollabs-300: #9DA2AA !important;
+        --color-warning: var(--beacon-warning) !important;
+        --color-success: var(--beacon-success) !important;
+        --color-error: var(--beacon-error) !important;
+        --color-fg: var(--beacon-ink) !important;
+        --color-fg-dim: var(--beacon-secondary) !important;
+        --color-fg-faint: var(--beacon-muted) !important;
+        --color-nav-text: var(--beacon-secondary) !important;
+        --color-nav-muted: var(--beacon-muted) !important;
+        --color-nav-active: var(--beacon-ink) !important;
+        --color-hairline: var(--beacon-line) !important;
+        --color-log: #111214 !important;
+        --color-log-toolbar: var(--beacon-panel) !important;
+        --coollabs-canvas: var(--beacon-canvas) !important;
+        --coollabs-elevated: var(--beacon-panel) !important;
+        --coollabs-recessed: var(--beacon-raised) !important;
+        --coollabs-base: var(--beacon-panel) !important;
+        --coollabs-fill: var(--beacon-raised) !important;
+        --coollabs-line: var(--beacon-control-line) !important;
+        --coollabs-hairline: var(--beacon-line) !important;
+        --coollabs-divider: var(--beacon-line) !important;
+        --coollabs-subtle: var(--beacon-muted) !important;
+    }
+
+    /* Native light appearance uses raw neutral utilities. Remap those too,
+       keeping installation independent of Coolify's saved appearance mode. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="bg-white"], [class~="bg-white/95"], [class~="bg-white/80"], [class~="bg-neutral-50"]) {
+        background-color: var(--beacon-panel) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="bg-neutral-100"], [class~="bg-neutral-200"]) {
+        background-color: var(--beacon-raised) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-black"], [class~="text-neutral-950"], [class~="text-neutral-900"]) {
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-neutral-600"], [class~="text-neutral-700"]) {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="text-neutral-400"], [class~="text-neutral-500"]) {
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]):where(:not(.dark)) :where(.app-shell) :is([class~="border-neutral-200"], [class~="border-neutral-300"]) {
+        border-color: var(--beacon-control-line) !important;
+    }
+
+    /* 1. Shell: fixed desktop bar + 32px clearance; mobile bar is in flow.
+       Preserve native sidebar offsets, collapsed navigation and full canvases. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) body,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-shell,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main {
+        background-color: var(--beacon-canvas) !important;
+        color: var(--beacon-ink);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) {
+        padding-top: var(--beacon-main-top) !important;
+        padding-bottom: var(--beacon-main-bottom) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full):not(.app-main-wide) > div.w-full {
+        width: 100%;
+        max-width: 1600px !important;
+        margin-inline: auto;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace {
+        width: 100%;
+        max-width: none !important;
+        min-width: 0;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main .application-settings-form:not(.application-settings-section) {
+        min-width: 0;
+        max-width: none !important;
+    }
+    @media (min-width: 1024px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) {
+            --beacon-main-top: 80px;
+            --beacon-main-bottom: 40px;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-topbar, .app-topbar-brand, .app-sidebar nav.sidebar-nav, .mobile-sidebar-sheet [role="dialog"]) {
+        background-color: var(--beacon-sidebar) !important;
+        background-image: none !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem) {
+        min-height: 36px;
+        border-radius: 6px !important;
+        color: var(--beacon-secondary) !important;
+        box-shadow: none !important;
+        transition: color 150ms var(--beacon-ease), background-color 150ms var(--beacon-ease);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem):hover {
+        background-color: var(--beacon-panel) !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item-active, .menu-subitem-active) {
+        background-color: var(--beacon-selected) !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .menu-item-icon:not(.text-error):not(.text-warning) {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: currentColor !important;
+        background-image: none !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .nav-section {
+        color: var(--beacon-muted) !important;
+        font-size: 12px !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar :is(#server-topbar-context, #resource-action-hud-slot) {
+        font-size: 14px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-topbar span.font-semibold {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500 !important;
+        opacity: 1;
+    }
+    /* Compact pages use native navigation; the classic desktop rail is below. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-navigation.in-main-nav {
+        display: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-navigation.in-main-nav ~ * {
+        grid-column: 1 / -1 !important;
+    }
+    /* Classic resource pages: reuse the local menu and native in-page header
+       that Coolify already renders. Do not force open dropdowns or dialogs. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div:has(> aside.application-settings-navigation.in-main-nav) {
+            grid-template-columns: 224px minmax(0, 1fr) !important;
+            column-gap: 32px !important;
+            align-items: start;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav {
+            display: block !important;
+            position: sticky !important;
+            inset: auto !important;
+            top: 80px !important;
+            align-self: start;
+            width: auto !important;
+            height: auto !important;
+            max-height: calc(100dvh - 104px);
+            margin: 0 !important;
+            padding: 0 16px 0 0 !important;
+            border-right: 1px solid var(--beacon-line);
+            border-radius: 0 !important;
+            background: transparent !important;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav ~ * {
+            grid-column: 2 / -1 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main nav [class~="xl:hidden"]:has(h1) {
+            display: flex !important;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 24px !important;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--beacon-line);
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main nav [class~="xl:hidden"] [class~="lg:hidden"]:has(h1) {
+            display: block !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main nav [class~="xl:hidden"] h1) #resource-action-hud-slot {
+            display: none !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace .application-settings-navigation .menu-item {
+        min-height: 36px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-workspace .application-settings-navigation .menu-item-active {
+        background: var(--beacon-selected) !important;
+        color: var(--beacon-warning) !important;
+    }
+    /* Classic global rail: when a page has its own settings rail, the outer
+       rail shows the main menu instead of a second copy of those settings.
+       Group buttons open submenus only through Alpine's navLevel, so each
+       group shows as its first native link, labelled with the group name.
+       Groups follow the direct links; reading-flow keeps Tab in that order. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu {
+            reading-flow: flex-visual;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[data-nav-level] {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] {
+            display: block !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li.contents[x-show="navLevel === -1 && !submenu"] {
+            order: -2;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show="navLevel === -1 && !submenu"] > ul > li:is(.nav-section, :has(> button[title])) {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] {
+            display: block !important;
+            order: -1;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="]:nth-child(1 of [x-show*="submenu ==="]) {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--beacon-line);
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:not(:has(> a.menu-item)),
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="submenu ==="] > ul > li:has(> a.menu-item) ~ li {
+            display: none !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Monitoring'"] {
+            --beacon-group: "Monitoring";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Integrations'"] {
+            --beacon-group: "Integrations";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Shared Variables'"] {
+            --beacon-group: "Shared Variables";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Team'"] {
+            --beacon-group: "Team";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Notifications'"] {
+            --beacon-group: "Notifications";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show*="'Keys"] {
+            --beacon-group: "Keys & Tokens";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li[x-show$="'Settings'"] {
+            --beacon-group: "Settings";
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item > .menu-item-label {
+            display: none;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-menu > li:is([x-show*="'Monitoring'"], [x-show*="'Integrations'"], [x-show*="'Shared Variables'"], [x-show$="'Team'"], [x-show*="'Notifications'"], [x-show*="'Keys"], [x-show$="'Settings'"]) a.menu-item::after {
+            content: var(--beacon-group);
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]):has(.app-main:not(.app-main-full) .application-settings-workspace:not(.runtime-logs-page *) > div > aside.application-settings-navigation.in-main-nav) .app-sidebar .sidebar-collapsed .sidebar-menu > li[x-show*="submenu ==="] a.menu-item::after {
+            display: none;
+        }
+    }
+    /* Open form sections resemble the classic page; tables/logs keep shells. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) {
+        border: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) > .application-settings-section-body {
+        border: 0 !important;
+        padding: 16px 0 !important;
+        background: transparent !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main:not(.app-main-full) .application-settings-workspace:has(.application-settings-navigation.in-main-nav):not(.runtime-logs-page *) .application-settings-section:not(.logs-settings-section):not(:has(.data-table)):not(:has(.runtime-log-shell)) > header {
+        padding: 0 0 8px !important;
+    }
+
+    /* 2. Typography: existing Geist/Reicon, three text roles, tabular figures. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main {
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+        font-size: 28px !important;
+        line-height: 36px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-black"], [class~="text-neutral-950"]) {
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-neutral-600"], [class~="text-fg-dim"], [class~="dark:text-fg-dim"]) {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main :is([class~="text-neutral-400"], [class~="text-neutral-500"], [class~="text-fg-faint"], [class~="dark:text-fg-faint"]) {
+        color: var(--beacon-muted) !important;
+    }
+    /* Keep semantic text separate from Coolify's custom-theme brand mapping. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-warning"], [class~="dark:text-warning"]) {
+        color: var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-success"], [class~="dark:text-success"]) {
+        color: var(--beacon-success) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([class~="text-error"], [class~="dark:text-error"]) {
+        color: var(--beacon-error) !important;
+    }
+
+    /* 3. Resource/settings sections: flat surfaces and readable section titles. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section {
+        border: 1px solid var(--beacon-line) !important;
+        border-radius: 12px !important;
+        padding: 8px !important;
+        background: var(--beacon-panel) !important;
+        box-shadow: none !important;
+        scroll-margin-top: 96px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) {
+        gap: 12px;
+        min-height: 40px;
+        padding: 4px 8px 12px !important;
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) :is(h2, h3) {
+        color: var(--beacon-ink) !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        line-height: 24px !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section > :is(header, .application-settings-section-header) p {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section-body {
+        padding: 16px !important;
+        border: 1px solid var(--beacon-line) !important;
+        border-radius: 4px !important;
+        background: var(--beacon-surface) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-section-body.is-flush {
+        padding: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.application-settings-form, .application-settings-workspace) label {
+        font-size: 13px !important;
+        line-height: 20px !important;
+        font-weight: 500 !important;
+        color: var(--beacon-ink) !important;
+    }
+    /* Preserve field/toolbar heights, password toggles, steppers and editors. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.input, .select, .listbox-trigger) {
+        border-color: var(--beacon-control-line) !important;
+        border-radius: 8px !important;
+        background-color: var(--beacon-canvas) !important;
+        color: var(--beacon-ink) !important;
+        font-size: 13px;
+        font-weight: 400;
+        box-shadow: none;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(input, textarea)::placeholder {
+        color: var(--beacon-muted) !important;
+        opacity: 1;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.input, .select, .listbox-trigger, button, a):focus-visible {
+        outline: 2px solid var(--beacon-secondary) !important;
+        outline-offset: 2px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.listbox-panel, .searchable-listbox-panel) {
+        background: var(--beacon-raised) !important;
+        border-color: var(--beacon-control-line) !important;
+        border-radius: 8px !important;
+        color: var(--beacon-ink);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+    }
+
+    /* 4. Actions: one clear primary action, quiet secondary controls. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button:not(.button-error):not(.button-highlighted):not(.split-action-main):not([isHighlighted]) {
+        background: var(--beacon-raised) !important;
+        border-color: var(--beacon-control-line) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.button-highlighted, .button[isHighlighted], .split-action-main):not(.button-error) {
+        background: var(--beacon-ink) !important;
+        color: var(--beacon-canvas) !important;
+        border-color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.button-highlighted, .button[isHighlighted], .split-action-main) svg {
+        color: currentColor !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button-error {
+        background: color-mix(in srgb, var(--beacon-error) 10%, var(--beacon-panel)) !important;
+        border-color: color-mix(in srgb, var(--beacon-error) 30%, transparent) !important;
+        color: var(--beacon-error) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .button:disabled {
+        opacity: 0.45;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-tab {
+        color: var(--beacon-secondary) !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+        font-weight: 400 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-tab-active {
+        color: var(--beacon-ink) !important;
+        background: var(--beacon-selected) !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .view-toggle {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-control-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .view-toggle > .is-selected {
+        background: var(--beacon-selected) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+    }
+
+    /* 5. Projects/resources/servers: names first, domains and state readable. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([x-data="projectsIndex()"], [x-data="resourceIndex()"], .application-settings-form:has(.dashboard-activity)) article {
+        border-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        transform: none !important;
+        transition: background-color 150ms var(--beacon-ease), border-color 150ms var(--beacon-ease) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is([x-data="projectsIndex()"], [x-data="resourceIndex()"], .application-settings-form:has(.dashboard-activity)) article:hover {
+        background: var(--beacon-surface) !important;
+        border-color: var(--beacon-control-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .resource-glyph {
+        color: var(--beacon-secondary) !important;
+        background: transparent !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .resource-glyph svg {
+        color: inherit !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.project-description, .resource-domain, .resource-server, .mobile-resource-domain) {
+        color: var(--beacon-secondary) !important;
+        font-size: 13px;
+        line-height: 20px;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.projects-table-grid, .environment-resource-grid).group {
+        min-height: 56px;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main [x-show="viewMode === 'table'"] > a.grid {
+        min-height: 56px;
+        border-color: var(--beacon-line) !important;
+        color: var(--beacon-ink) !important;
+    }
+
+    /* 6. Data tables and history: retain native columns and responsive modes. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-header {
+        min-height: 40px;
+        height: 40px !important;
+        border-bottom-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        color: var(--beacon-muted) !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-row {
+        min-height: 48px !important;
+        padding-block: 12px !important;
+        color: var(--beacon-ink) !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
+        border-bottom-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-header [class~="uppercase"] {
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.data-table-row, .projects-table-grid.group, .environment-resource-grid.group):hover {
+        background-color: var(--beacon-raised) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .data-table-row-active {
+        background: var(--beacon-selected) !important;
+        box-shadow: inset 2px 0 0 var(--beacon-secondary);
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .env-table-item {
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .env-key-label {
+        font-family: var(--beacon-mono);
+        font-size: 13px;
+        font-weight: 500 !important;
+        color: var(--beacon-ink) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.data-table, .deployment-table-scroll) {
+        scrollbar-width: thin;
+        scrollbar-color: #555B62 transparent;
+        font-variant-numeric: tabular-nums;
+    }
+    /* No deployment grid-template override: embedded history has 5/2 columns. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has(> span.relative.flex, > span.rounded-full) {
+        min-height: 24px;
+        border-radius: 6px !important;
+        border-color: var(--beacon-control-line) !important;
+        background: var(--beacon-raised) !important;
+        color: var(--beacon-secondary) !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-warning"]) {
+        color: var(--beacon-warning) !important;
+        background: color-mix(in srgb, var(--beacon-warning) 8%, var(--beacon-panel)) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-emerald-500"]) {
+        color: var(--beacon-success) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) span.inline-flex.rounded-full.border:has([class~="bg-red-500"]) {
+        color: var(--beacon-error) !important;
+    }
+
+    /* 7. Dashboard: the activity section is the operational focus. */
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-form:has(.dashboard-activity) .grid:has(> .dashboard-activity) {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 32px !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .grid > .dashboard-activity {
+            grid-column: 1 / -1 !important;
+            order: -1 !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity :is(h2, h3) {
+        color: var(--beacon-ink) !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h2 {
+        font-size: 20px !important;
+        line-height: 28px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h3 {
+        font-size: 13px !important;
+        line-height: 20px !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid) {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-line) !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity section > div > div:has(> a.dashboard-deployment-table-grid):has(h3) {
+        border-left: 2px solid var(--beacon-warning) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity .dashboard-deployment-table-grid:not(a) {
+        min-height: 40px;
+        background: var(--beacon-panel) !important;
+        color: var(--beacon-muted) !important;
+        border-color: var(--beacon-line) !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid {
+        min-height: 56px;
+        padding-block: 12px !important;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid > div:first-child > p:first-child {
+        color: var(--beacon-ink) !important;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        font-weight: 500 !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid > p:last-of-type {
+        font-family: var(--beacon-mono);
+        font-size: 12px !important;
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity a.dashboard-deployment-table-grid:hover {
+        background: var(--beacon-raised) !important;
+    }
+
+    /* 8. Metrics and logs: content carries the color, controls stay quiet. */
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(#metrics-overview-section, #metrics-servers-section, #metrics-containers-section, #cpu-metrics-section, #memory-metrics-section) {
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-text {
+        fill: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-legend-text {
+        color: var(--beacon-secondary) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .apexcharts-gridline {
+        stroke: var(--beacon-line) !important;
+    }
+    @media (min-width: 1280px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page {
+            height: calc(100dvh - var(--beacon-main-top) - var(--beacon-main-bottom)) !important;
+        }
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.runtime-log-shell, .runtime-log-panel, .logs-viewer) {
+        background: #111214 !important;
+        border-color: var(--beacon-line) !important;
+        color: var(--beacon-ink) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page,
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page :is(.application-settings-workspace, .runtime-logs-column, .runtime-logs-workspace, .runtime-logs-fill, .application-settings-section, .application-settings-section-body, .runtime-log-shell, .runtime-log-panel, .logs-viewer) {
+        min-width: 0;
+        max-width: 100%;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .runtime-logs-page > .application-settings-workspace > .grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.runtime-log-toolbar, .logs-viewer-toolbar) {
+        background: var(--beacon-panel) !important;
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.logs-viewer-line-text, .logs-viewer-timestamp, .runtime-log-detail) {
+        font-family: var(--beacon-mono) !important;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-viewer-timestamp {
+        color: var(--beacon-muted) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.logs-viewer-btn, .runtime-log-icon-button) {
+        color: var(--beacon-secondary) !important;
+        border-color: var(--beacon-line) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.terminal-target-card, .terminal-target-picker) {
+        border-color: var(--beacon-line) !important;
+        background: var(--beacon-panel) !important;
+        box-shadow: none !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .terminal-session-toolbar {
+        border-color: var(--beacon-line) !important;
+    }
+    html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.terminal-target-group-label, .terminal-target-list section > div) {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        font-weight: 400 !important;
+        letter-spacing: 0 !important;
+        text-transform: none !important;
+        color: var(--beacon-muted) !important;
+    }
+    /* Coolify uses important Tailwind utilities for these headings.
+       Important declarations in the early theme layer outrank important
+       utilities; an unlayered important rule cannot override them. */
+    @layer theme {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+            font-size: 28px !important;
+            line-height: 36px !important;
+            font-weight: 500 !important;
+            letter-spacing: 0 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h2,
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .application-settings-form:has(.dashboard-activity) section > .mb-3 h2 {
+            font-size: 20px !important;
+            line-height: 28px !important;
+            font-weight: 500 !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .dashboard-activity h3 {
+            font-size: 13px !important;
+            line-height: 20px !important;
+            font-weight: 500 !important;
+        }
+        @media (max-width: 767px) {
+            html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+                font-size: 24px !important;
+                line-height: 32px !important;
+            }
+        }
+    }
+    /* Virtualized line height/transforms, chart series and terminal canvas are native. */
+    @media (max-width: 767px) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .app-main h1 {
+            font-size: 24px !important;
+            line-height: 32px !important;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item, .menu-subitem) {
+            min-height: 40px;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-settings-section > :is(header, .application-settings-section-header) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) .logs-settings-section > :is(header, .application-settings-section-header) > div {
+            min-width: 0;
+            max-width: 100%;
+            flex-wrap: wrap;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html:has(.app-shell .app-topbar-brand a[title="Coolify"]) :is(.menu-item, .menu-subitem, .data-table-row, article) {
+            transition: none !important;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="app-shell">
+<header class="app-topbar"><div class="app-topbar-brand"><a href="#" title="Coolify">Coolify</a><small>v4.5.3</small></div><div class="topbar-context"><strong>Sample team</strong><span>/</span><span id="sample-context">Dashboard</span></div><div id="resource-action-hud-slot"></div></header>
+<aside class="app-sidebar"><nav class="sidebar-nav">
+<div class="menu-item menu-search"><svg class="menu-item-icon" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.5"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.5"/></svg><span>Search</span><kbd>Ctrl K</kbd></div>
+<a href="#" class="menu-item menu-item-active"><span class="menu-item-icon">⌂</span><span class="menu-item-label">Dashboard</span></a>
+<a href="#" class="menu-item"><span class="menu-item-icon">▦</span><span class="menu-item-label">Projects</span></a>
+<a href="#" class="menu-item"><span class="menu-item-icon">≋</span><span class="menu-item-label">Monitoring</span></a>
+<a href="#" class="menu-item"><span class="menu-item-icon">›_</span><span class="menu-item-label">Terminal</span></a>
+<div class="nav-section">Infrastructure</div><a href="#" class="menu-item"><span class="menu-item-icon">▤</span><span>Servers</span></a><a href="#" class="menu-item"><span class="menu-item-icon">◇</span><span>Integrations</span></a><a href="#" class="menu-item"><span class="menu-item-icon">{ }</span><span>Shared variables</span></a>
+<div class="nav-section">Manage</div><a href="#" class="menu-item"><span class="menu-item-icon">♧</span><span>Team</span></a><a href="#" class="menu-item"><span class="menu-item-icon">♧</span><span>Notifications</span></a><a href="#" class="menu-item"><span class="menu-item-icon">⚿</span><span>Keys &amp; tokens</span></a><a href="#" class="menu-item"><span class="menu-item-icon">⚙</span><span>Settings</span></a><div class="sidebar-footer">Sample workspace</div>
+</nav></aside>
+<main class="app-main"><div class="w-full" id="sample-content"></div></main>
+</div>
+<div class="preview-controls"><span class="sample-note">Sample preview · no live data</span><label for="sample-page">Page</label><select id="sample-page"><option>Dashboard</option><option>Resources</option><option>Deployments</option><option>Settings</option><option>Environment</option><option>Metrics</option><option>Logs</option><option>Canvas</option></select></div>
+<template id="dashboard">
+<div class="application-settings-form w-full"><div class="stack gap-8"><div class="grid dashboard-layout gap-8">
+<div class="dashboard-activity"><div><section><div class="section-heading"><h2>Recent deployments</h2></div><div class="stack gap-4">
+<div class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]"><div class="deployment-card-title"><h3>Active</h3><p class="text-neutral-500 dark:text-fg-faint">Running or queued right now</p></div><div class="dashboard-deployment-table-grid table-head"><span>Application</span><span>Environment</span><span>Server</span><span>Status</span><span>Started</span></div>
+<a class="dashboard-deployment-table-grid" href="#"><div class="min-w-0"><p class="resource-name">api-gateway</p></div><p class="desktop-cell text-neutral-500 dark:text-fg-dim">Core / production</p><p class="desktop-cell text-neutral-500 dark:text-fg-dim">edge-01</p><span class="desktop-cell" data-badge="In progress|warning"></span><p class="desktop-cell text-neutral-500 dark:text-fg-dim">35 sec ago</p><div class="mt-3 mobile-deployment"><span data-badge="In progress|warning"></span><p class="text-neutral-500 dark:text-fg-faint">Core / production · edge-01</p></div></a>
+<a class="dashboard-deployment-table-grid" href="#"><div class="min-w-0"><p class="resource-name">worker</p></div><p class="desktop-cell text-neutral-500 dark:text-fg-dim">Core / production</p><p class="desktop-cell text-neutral-500 dark:text-fg-dim">build-01</p><span class="desktop-cell" data-badge="Queued|warning"></span><p class="desktop-cell text-neutral-500 dark:text-fg-dim">10 sec ago</p><div class="mt-3 mobile-deployment"><span data-badge="Queued|warning"></span><p class="text-neutral-500 dark:text-fg-faint">Core / production · build-01</p></div></a></div>
+<div class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]"><div class="dashboard-deployment-table-grid table-head"><span>Application</span><span>Environment</span><span>Server</span><span>Status</span><span>Started</span></div>
+<a class="dashboard-deployment-table-grid" href="#"><div><p class="resource-name">docs</p></div><p class="desktop-cell text-neutral-500 dark:text-fg-dim">Website / production</p><p class="desktop-cell text-neutral-500 dark:text-fg-dim">edge-01</p><span class="desktop-cell" data-badge="Success|success"></span><p class="desktop-cell text-neutral-500 dark:text-fg-dim">12 minutes ago</p><div class="mt-3 mobile-deployment"><span data-badge="Success|success"></span><p class="text-neutral-500">Website / production · edge-01</p></div></a>
+<a class="dashboard-deployment-table-grid" href="#"><div><p class="resource-name">api-gateway</p></div><p class="desktop-cell text-neutral-500 dark:text-fg-dim">Core / production</p><p class="desktop-cell text-neutral-500 dark:text-fg-dim">edge-01</p><span class="desktop-cell" data-badge="Failed|error"></span><p class="desktop-cell text-neutral-500 dark:text-fg-dim">48 minutes ago</p><div class="mt-3 mobile-deployment"><span data-badge="Failed|error"></span><p class="text-neutral-500">Core / production · edge-01</p></div></a></div>
+</div></section></div></div>
+<div class="stack gap-8"><section><div class="section-heading"><h2>Projects</h2><button class="button">New project</button></div><div class="collection-grid"><a href="#" class="box resource-view"><strong>Core</strong><p class="text-neutral-500">Application services and workers</p><div class="resource-tile-footer text-neutral-500">3 environments · 6 resources</div></a><a href="#" class="box resource-view"><strong>Website</strong><p class="text-neutral-500">Public website and documentation</p><div class="resource-tile-footer text-neutral-500">1 environment · 2 resources</div></a><a href="#" class="box resource-view"><strong>Automation</strong><p class="text-neutral-500">Scheduled tools and integrations</p><div class="resource-tile-footer text-neutral-500">1 environment · 3 resources</div></a></div></section>
+<section><div class="section-heading"><h2>Servers</h2><button class="button">New server</button></div><div class="table-shell table-scroll rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]"><div class="server-grid table-head"><span>Name</span><span>Status</span><span>Usage</span><span>Resources</span></div><a href="#" class="server-grid table-row"><strong>edge-01</strong><span data-badge="Ready|success"></span><span class="tabular-nums text-neutral-500">14% CPU · 3.2 / 8 GB</span><span>7 resources</span></a><a href="#" class="server-grid table-row"><strong>build-01</strong><span data-badge="Ready|success"></span><span class="tabular-nums text-neutral-500">43% CPU · 5.1 / 16 GB</span><span>4 resources</span></a></div></section></div>
+</div></div></div>
+</template>
+<template id="resources">
+<div class="page-heading"><div><h1>Production</h1><p class="text-neutral-500">Core / production</p></div><button class="button button-highlighted">New resource</button></div><div class="resource-toolbar"><input class="input h-7" data-compact-input type="search" placeholder="Search resources"><button class="button">Filter</button></div>
+<div class="table-shell rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]"><div class="environment-resource-grid table-head"><div>Resource</div><div class="resource-type">Type</div><div>Status</div><div class="resource-domain">Domain</div><div class="resource-server">Server</div><div class="resource-tags">Tags</div></div><div id="resource-rows"></div></div>
+</template>
+<template id="deployments">
+<div class="page-heading"><div><h1>Deployment history</h1><p class="text-neutral-500">api-gateway / production</p></div></div><div class="resource-toolbar"><input class="input h-7" data-compact-input type="search" placeholder="Search deployments"><button class="button">Filter</button></div>
+<section class="application-settings-workspace w-full"><div class="workspace-grid"><aside class="application-settings-navigation in-main-nav"><a class="menu-item menu-item-active">General</a><a class="menu-item">Deployments</a></aside><div class="application-settings-form min-w-0"><section class="application-settings-section"><header><h3>Deployment history</h3></header><div class="application-settings-section-body is-flush"><div class="data-table"><div class="deployment-table-scroll" id="full-deployment"></div></div></div></section></div></div></section>
+<div class="section-heading" style="margin-top:24px"><h2>Embedded history beside deployment logs</h2></div><div class="embedded-grid"><div class="runtime-log-shell"><div class="log-toolbar">Build logs</div><pre class="logs-viewer">[12:34:10] Starting deployment
+[12:34:11] Pulling source revision c34f6d1
+[12:34:14] Building runtime image
+[12:34:18] Installing dependencies
+[12:34:24] Running health check</pre></div><div class="application-settings-form deployment-history-fit"><section class="application-settings-section"><header><h3>Deployment history</h3></header><div class="application-settings-section-body is-flush"><div class="data-table deployment-table-embedded"><div class="deployment-table-scroll" id="embedded-deployment"></div></div></div></section></div></div>
+</template>
+<template id="settings">
+<nav class="w-full max-w-none"><div><div class="page-heading xl:hidden"><div><h1>api-gateway</h1><p class="text-neutral-500">Core / production</p><div class="flex gap-2" style="margin-top:8px"><span data-badge="Running|success"></span><a href="https://api.example.test">api.example.test</a></div></div><div id="application-mobile-actions" class="resource-heading-navbar application-heading-actions"><button class="button split-action-main">Redeploy</button></div></div></div></nav>
+<section class="application-settings-workspace w-full"><div class="workspace-grid"><aside class="application-settings-navigation in-main-nav"><nav aria-label="Configuration sections"><a class="menu-item menu-item-active">General</a><a class="menu-item">Domains</a><a class="menu-item">Advanced</a><a class="menu-item">Environment variables</a><a class="menu-item">Persistent storage</a><a class="menu-item">Deployments</a><a class="menu-item">Logs</a><a class="menu-item">Terminal</a><a class="menu-item">Healthcheck</a><a class="menu-item">Resource limits</a></nav></aside><div class="application-settings-form min-w-0"><div class="stack gap-6">
+<section class="application-settings-section" id="application-details-section"><header><h3>Application details</h3></header><div class="application-settings-section-body"><form class="form-grid"><label>Name<input class="input" value="api-gateway"></label><label>Description<input class="input" value="Public API and routing"></label></form></div></section>
+<section class="application-settings-section" id="access-section"><header><h3>Access</h3><button class="button">Manage domains</button></header><div class="application-settings-section-body"><p>api.example.test</p><p class="text-neutral-500" style="margin-top:8px">Public access</p></div></section>
+<section class="application-settings-section" id="build-pipeline-section"><header><h3>Build &amp; deploy</h3></header><div class="application-settings-section-body"><div class="form-grid"><label>Build strategy<select class="select"><option>Docker Image</option></select></label><label>Image<input class="input" value="ghcr.io/example/api-gateway"></label><label>Tag<input class="input" value="latest"></label></div></div></section>
+<section class="application-settings-section" id="container-section"><header><h3>Container</h3></header><div class="application-settings-section-body"><label>Custom Docker options<input class="input" value="--memory=512m"></label></div></section>
+</div></div></div></section>
+</template>
+<template id="environment">
+<div class="page-heading"><h1>Environment variables</h1><button class="button">Add</button></div>
+<section class="application-settings-workspace w-full"><div class="workspace-grid"><aside class="application-settings-navigation in-main-nav"><nav><a class="menu-item">General</a><a class="menu-item">Domains</a><a class="menu-item">Advanced</a><a class="menu-item menu-item-active">Environment variables</a><a class="menu-item">Persistent storage</a><a class="menu-item">Deployments</a><a class="menu-item">Logs</a></nav></aside><div class="application-settings-form min-w-0"><section class="application-settings-section"><header><h3>Environment variables</h3></header><div class="application-settings-section-body is-flush"><div class="environment-table-scroll"><div class="data-table"><div class="data-table-header env-table-grid"><span>Name</span><span>Managed</span><span>Type</span><span>Literal</span><span>Multiline</span><span>Buildtime</span><span>Runtime</span><span></span></div><div id="env-rows"></div></div></div></div></section></div></div></section>
+</template>
+<template id="metrics">
+<div class="page-heading"><div><h1>Metrics</h1><p class="text-neutral-500">edge-01</p></div></div><div class="resource-toolbar"><select class="select"><option>Last hour</option></select><button class="button">Live</button></div><div class="stack gap-6"><section class="application-settings-section" id="cpu-metrics-section"><header><h3>CPU usage</h3></header><div class="application-settings-section-body" data-chart="cpu"></div></section><section class="application-settings-section" id="memory-metrics-section"><header><h3>Memory usage</h3></header><div class="application-settings-section-body" data-chart="memory"></div></section></div>
+</template>
+<template id="logs">
+<div class="page-heading"><div><h1>Logs</h1><p class="text-neutral-500">api-gateway / production</p></div></div><div class="runtime-logs-page"><section class="application-settings-workspace"><div class="grid"><section class="application-settings-section logs-settings-section"><header><h3>Runtime logs</h3><div class="flex gap-2"><select class="select"><option>api-gateway</option></select><button class="button">Follow logs</button></div></header><div class="application-settings-section-body is-flush"><div class="runtime-log-shell"><div class="log-toolbar"><input class="input h-7" data-compact-input placeholder="Search logs"></div><pre class="logs-viewer">2026-11-01T12:31:04Z  INFO  Server listening on 0.0.0.0:3000
+2026-11-01T12:31:05Z  INFO  Database connection ready
+2026-11-01T12:31:06Z  INFO  Health check passed
+2026-11-01T12:32:14Z  INFO  GET /api/status 200 12ms
+2026-11-01T12:32:19Z  WARN  Retrying upstream request after timeout
+2026-11-01T12:32:20Z  INFO  Upstream request completed 200 142ms
+2026-11-01T12:33:01Z  INFO  GET /api/status 200 9ms
+2026-11-01T12:33:12Z  ERROR Connection reset by peer
+2026-11-01T12:33:13Z  INFO  Reconnected to upstream</pre></div></div></section></div></section></div>
+</template>
+<template id="canvas">
+<div data-canvas-root><div class="canvas-viewport" style="transform:matrix(1,0,0,1,0,0)"><svg class="canvas-edges" width="1200" height="700" aria-hidden="true"><path d="M300 220H470V380H650" fill="none" stroke="#52525b" stroke-width="2"/></svg><div class="resource-view canvas-node" style="left:120px;top:150px;width:180px"><strong>api-gateway</strong><span data-badge="Running|success"></span></div><div class="resource-view canvas-node" style="left:650px;top:330px;width:180px"><strong>postgres</strong><span data-badge="Running|success"></span></div></div></div>
+</template>
+<script>
+const content=document.querySelector('#sample-content'),select=document.querySelector('#sample-page');
+const navPaths=['M3 10 12 3l9 7M5 9v12h5v-7h4v7h5V9','M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z','M3 17h3l3-9 5 12 4-14 3 11','m5 6 6 6-6 6M13 18h6','M4 4h16v6H4zM4 14h16v6H4zM7 7h.01M7 17h.01','m8 4-4 4 4 4M16 12l4 4-4 4M4 8h12M8 16h12','M8 3H5v18h3M16 3h3v18h-3M10 10h4M10 14h4','M8 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 22v-3a6 6 0 0 1 12 0v3M16 4a4 4 0 0 1 0 8M17 16a5 5 0 0 1 5 5','M5 17h14l-2-3V8a5 5 0 0 0-10 0v6l-2 3ZM10 21h4','M14 10a6 6 0 1 0-5 5l3 3 2-2 2 2 3-3-6-6','M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM10 2h4l1 4 4 1 3 3v4l-4 1-1 4-3 3h-4l-1-4-4-1-3-3v-4l4-1 1-4Z'];
+document.querySelectorAll('.app-sidebar span.menu-item-icon').forEach((el,i)=>{el.outerHTML='<svg class="menu-item-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="'+navPaths[i%navPaths.length]+'" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'});
+function badge(label,type){const dot=type==='success'?'emerald-500':type==='error'?'red-500':type;return '<span class="inline-flex h-6 max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-neutral-200 bg-neutral-100 px-2 text-xs font-medium leading-none text-neutral-700 dark:border-white/[0.12] dark:bg-white/[0.07] dark:text-white" data-status="'+type+'"><span class="relative flex size-1.5 shrink-0"><span class="relative inline-flex size-1.5 rounded-full bg-'+dot+'"></span></span><span class="truncate">'+label+'</span></span>'}
+const rows=[['In progress','warning','Webhook','c34f6d1','Restore health checks','35 sec ago','35s','edge-01'],['Success','success','Manual','a4e91c8','Update application configuration','12 minutes ago','1m 42s','edge-01'],['Failed','error','Webhook','4d3b2a1','Refresh runtime image','48 minutes ago','54s','build-01'],['Success','success','API','3fe7a29','Update service settings','2 hours ago','1m 18s','edge-01']];
+function deploymentTable(embedded){const headers=embedded?['Source','Commit','Duration','Server','Status']:['Status','Source','Commit','Started','Duration','Server'];return '<div class="data-table-header deployment-table-grid">'+headers.map(x=>'<span>'+x+'</span>').join('')+'</div>'+rows.map((r,i)=>{const commit='<span class="min-w-0"><span class="flex items-center gap-2"><a class="font-mono text-xs" href="#">'+r[3]+'</a><span class="truncate text-neutral-500 dark:text-fg-faint">'+r[4]+'</span></span>'+(embedded?'<span class="embedded-meta text-xs text-neutral-500">'+r[2]+' · '+r[6]+' · '+r[7]+'</span>':'')+'</span>';const cells=embedded?['<span>'+r[2]+'</span>',commit,'<span class="tabular-nums">'+r[6]+'</span>','<span>'+r[7]+'</span>','<span>'+badge(r[0],r[1])+'</span>']:['<span>'+badge(r[0],r[1])+'</span>','<span>'+r[2]+'</span>',commit,'<span>'+r[5]+'</span>','<span class="tabular-nums">'+r[6]+'</span>','<span>'+r[7]+'</span>'];return '<div class="data-table-row deployment-table-row deployment-table-grid '+(i===0?'data-table-row-active':'')+'">'+cells.join('')+'</div>'}).join('')}
+function chart(name,values,color){const points=values.map((v,i)=>(40+i*84)+','+(220-v*1.8)).join(' ');return '<svg class="apexcharts-svg" viewBox="0 0 680 260" role="img" aria-label="'+name+'"><g class="apexcharts-grid" stroke="#38383d" stroke-width="1">'+[40,85,130,175,220].map(y=>'<line x1="40" y1="'+y+'" x2="640" y2="'+y+'"/>').join('')+'</g><g fill="#929299" font-size="11" font-family="monospace"><text x="5" y="45">100</text><text x="12" y="135">50</text><text x="20" y="225">0</text></g><polyline class="apexcharts-line" fill="none" stroke="'+color+'" stroke-width="2.5" points="'+points+'"/><g fill="#929299" font-size="11" font-family="monospace"><text x="40" y="250">12:00</text><text x="292" y="250">12:30</text><text x="605" y="250">13:00</text></g></svg>'}
+function nativeSectionHeadings(){
+  content.querySelectorAll('.section-heading').forEach(node=>{
+    const title=node.querySelector(':scope > h2');if(!title)return;
+    const actions=Array.from(node.children).filter(child=>child!==title);
+    node.className='mb-3 min-w-0';
+    const row=document.createElement('div');row.className='flex flex-wrap items-center justify-between gap-x-4 gap-y-2';
+    const label=document.createElement('div');label.className='flex min-w-0 items-baseline gap-2';
+    const inner=document.createElement('div');inner.className='flex min-w-0 items-center gap-1';
+    title.className='min-w-0 truncate text-[14px]! leading-5! font-semibold! text-black dark:text-fg';
+    inner.append(title);label.append(inner);row.append(label);
+    if(actions.length){const group=document.createElement('div');group.className='ml-auto flex shrink-0 items-center gap-3';group.append(...actions);row.append(group)}
+    node.replaceChildren(row);
+  });
+}
+function showScreen(name){name=String(name||'dashboard').toLowerCase();const template=document.getElementById(name);if(!(template instanceof HTMLTemplateElement))return showScreen('dashboard');content.replaceChildren(template.content.cloneNode(true));document.querySelector('.app-main').classList.toggle('app-main-full',name==='canvas');select.value=name[0].toUpperCase()+name.slice(1);document.querySelector('#sample-context').textContent=select.value;document.body.dataset.screen=name;history.replaceState(null,'','#'+name);
+nativeSectionHeadings();
+content.querySelectorAll('[data-badge]').forEach(e=>{const p=e.dataset.badge.split('|');e.innerHTML=badge(p[0],p[1])});
+if(name==='resources'){content.querySelector('#resource-rows').innerHTML=[['api-gateway','Application','Running','api.example.test','edge-01','production'],['worker','Application','Running','—','build-01','jobs'],['postgres','PostgreSQL','Running','—','edge-01','data'],['redis','Redis','Stopped','—','edge-01','cache']].map(r=>'<div class="environment-resource-grid table-row"><a href="#" class="resource-name">'+r[0]+'</a><div class="resource-type text-neutral-500">'+r[1]+'</div><div>'+badge(r[2],r[2]==='Running'?'success':'neutral')+'</div><div class="resource-domain text-neutral-500">'+r[3]+'</div><div class="resource-server text-neutral-500">'+r[4]+'</div><div class="resource-tags text-neutral-500">'+r[5]+'</div></div>').join('')}
+if(name==='deployments'){content.querySelector('#full-deployment').innerHTML=deploymentTable(false);content.querySelector('#embedded-deployment').innerHTML=deploymentTable(true)}
+if(name==='environment'){content.querySelector('#env-rows').innerHTML=[['APP_ENV','production'],['LOG_LEVEL','info'],['DATABASE_URL','••••••••••••••••']].map(r=>'<div class="env-table-item"><div class="data-table-row env-table-grid"><div><strong class="font-mono">'+r[0]+'</strong><p class="text-neutral-500 font-mono">'+r[1]+'</p></div><span>—</span><span>Production</span>'+[false,false,false,true].map(v=>'<span><input type="checkbox" '+(v?'checked':'')+' aria-label="Variable option"></span>').join('')+'<button class="button">Edit</button></div></div>').join('')}
+if(name==='metrics'){content.querySelector('[data-chart="cpu"]').innerHTML=chart('CPU usage',[12,17,15,43,38,21,14,16],'#e6b75a');content.querySelector('[data-chart="memory"]').innerHTML=chart('Memory usage',[32,34,38,42,45,43,40,40],'#a8b4bc')}
+window.scrollTo(0,0)}
+select.addEventListener('change',()=>showScreen(select.value));showScreen(location.hash.slice(1));document.addEventListener('click',e=>{if(e.target.closest('a[href="#"]'))e.preventDefault()});window.showScreen=showScreen;
+</script>
+</body></html>
